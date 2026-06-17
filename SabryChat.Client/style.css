@@ -1,0 +1,329 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0b0b1f;
+    font-family: Inter, Segoe UI, sans-serif;
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111827;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #8b5cf6;
+    border-radius: 999px;
+}
+
+/* =========================
+   CHAT BACKGROUND
+========================= */
+
+#messages {
+    background:
+        radial-gradient(circle at top left,
+            rgba(139,92,246,.15),
+            transparent 40%),
+
+        radial-gradient(circle at bottom right,
+            rgba(109,40,217,.12),
+            transparent 40%),
+
+        #0b0b1f;
+}
+
+/* =========================
+   ONLINE USERS
+========================= */
+
+.online-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    background: rgba(255,255,255,.05);
+
+    border: 1px solid rgba(255,255,255,.05);
+
+    padding: 12px;
+
+    border-radius: 16px;
+
+    transition: .3s;
+}
+
+.online-user:hover {
+    transform: translateY(-2px);
+    background: rgba(139,92,246,.15);
+}
+
+.online-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #22c55e;
+
+    box-shadow: 0 0 10px #22c55e;
+}
+
+/* =========================
+   MESSAGE ROW
+========================= */
+
+.message-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+
+    animation: messageIn .3s ease;
+}
+
+.message-row.me {
+    justify-content: flex-end;
+}
+
+.message-row.other {
+    justify-content: flex-start;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+        135deg,
+        #8b5cf6,
+        #6d28d9
+    );
+
+    font-weight: bold;
+}
+
+/* =========================
+   BUBBLE
+========================= */
+
+.message-content {
+    max-width: 420px;
+}
+
+.sender-name {
+    font-size: .8rem;
+    color: #cbd5e1;
+    margin-bottom: 6px;
+}
+
+.message-bubble {
+    padding: 14px 18px;
+
+    border-radius: 20px;
+
+    word-wrap: break-word;
+
+    backdrop-filter: blur(15px);
+}
+
+.message-row.me .message-bubble {
+
+    background: linear-gradient(
+        135deg,
+        #8b5cf6,
+        #6d28d9
+    );
+
+    color: white;
+
+    border-bottom-right-radius: 8px;
+
+    box-shadow:
+        0 10px 30px rgba(139,92,246,.3);
+}
+
+.message-row.other .message-bubble {
+
+    background: rgba(255,255,255,.08);
+
+    color: white;
+
+    border-bottom-left-radius: 8px;
+}
+
+/* =========================
+   SYSTEM MESSAGE
+========================= */
+
+.system-message {
+
+    width: fit-content;
+
+    margin: auto;
+
+    background: rgba(255,255,255,.05);
+
+    border-left: 4px solid #8b5cf6;
+
+    color: #d1d5db;
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    animation: messageIn .3s ease;
+}
+
+/* =========================
+   NOTIFICATIONS
+========================= */
+
+.notification-card {
+
+    background: rgba(255,255,255,.05);
+
+    border: 1px solid rgba(139,92,246,.2);
+
+    border-radius: 16px;
+
+    padding: 16px;
+
+    transition: .3s;
+}
+
+.notification-card:hover {
+
+    background: rgba(139,92,246,.15);
+
+    transform: translateY(-2px);
+}
+
+.notification-sender {
+
+    color: #a78bfa;
+
+    font-weight: 600;
+}
+
+.notification-time {
+
+    color: #94a3b8;
+
+    font-size: .8rem;
+}
+
+.notification-message {
+
+    margin-top: 8px;
+
+    color: #e2e8f0;
+}
+
+/* =========================
+   GLASS EFFECT
+========================= */
+
+.glass {
+    background: rgba(255,255,255,.05);
+
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+/* =========================
+   INPUT EFFECTS
+========================= */
+
+#messageInput {
+
+    transition: .3s;
+}
+
+#messageInput:focus {
+
+    box-shadow:
+        0 0 0 2px rgba(139,92,246,.4);
+}
+
+/* =========================
+   CONNECTION STATUS
+========================= */
+
+.connected {
+    color: #22c55e;
+}
+
+.disconnected {
+    color: #ef4444;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes messageIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseGlow {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(139,92,246,.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(139,92,246,0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(139,92,246,0);
+    }
+}
+
+#sendBtn:hover {
+
+    animation: pulseGlow 1s infinite;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width: 900px) {
+
+    aside {
+        display: none;
+    }
+
+    #notificationDrawer {
+        width: 100%;
+    }
+
+    .message-content {
+        max-width: 75%;
+    }
+}
