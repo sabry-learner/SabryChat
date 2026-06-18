@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SabryChat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2e1ca1b9bfad73561cf9cbea73a3c0df425c895")]
 [assembly: System.Reflection.AssemblyProductAttribute("SabryChat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SabryChat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

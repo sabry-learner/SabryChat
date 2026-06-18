@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.Net Projects\\SabryChat\\SabryChat\\SabryChat.csproj": {}
+    "D:\\.Net Projects\\SabryChat\\SabryChat.Api\\SabryChat\\SabryChat.Api\\SabryChat.csproj": {}
   },
   "projects": {
-    "D:\\.Net Projects\\SabryChat\\SabryChat\\SabryChat.csproj": {
+    "D:\\.Net Projects\\SabryChat\\SabryChat.Api\\SabryChat\\SabryChat.Api\\SabryChat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.Net Projects\\SabryChat\\SabryChat\\SabryChat.csproj",
+        "projectUniqueName": "D:\\.Net Projects\\SabryChat\\SabryChat.Api\\SabryChat\\SabryChat.Api\\SabryChat.csproj",
         "projectName": "SabryChat",
-        "projectPath": "D:\\.Net Projects\\SabryChat\\SabryChat\\SabryChat.csproj",
+        "projectPath": "D:\\.Net Projects\\SabryChat\\SabryChat.Api\\SabryChat\\SabryChat.Api\\SabryChat.csproj",
         "packagesPath": "C:\\Users\\ms693\\.nuget\\packages\\",
-        "outputPath": "D:\\.Net Projects\\SabryChat\\SabryChat\\obj\\",
+        "outputPath": "D:\\.Net Projects\\SabryChat\\SabryChat.Api\\SabryChat\\SabryChat.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

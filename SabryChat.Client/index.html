@@ -1,171 +1,221 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sabry Chat</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#8B5CF6',
-                        secondary: '#6D28D9',
-                        dark: '#0B0B1F',
-                        card: '#17172E'
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#8B5CF6",
+              secondary: "#6D28D9",
+              dark: "#0B0B1F",
+              card: "#17172E",
+            },
+          },
+        },
+      };
     </script>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
-</head>
+  </head>
 
-<body class="bg-dark text-white overflow-hidden">
-
-<!-- ================= JOIN MODAL ================= -->
-<div id="joinModal"
-     class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center">
-
-    <div class="bg-card w-[420px] p-8 rounded-3xl border border-purple-500/20">
-
+  <body class="bg-dark text-white overflow-hidden">
+    <!-- ================= JOIN MODAL ================= -->
+    <div
+      id="joinModal"
+      class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center"
+    >
+      <div
+        class="bg-card w-[420px] p-8 rounded-3xl border border-purple-500/20"
+      >
         <h1 class="text-3xl font-bold text-center mb-2">Sabry Chat</h1>
 
         <p class="text-center text-slate-400 mb-8">Join a room</p>
 
-        <input id="userName"
-               placeholder="Username"
-               class="w-full bg-slate-800 p-4 rounded-xl mb-4 outline-none">
+        <input
+          id="userName"
+          placeholder="Username"
+          class="w-full bg-slate-800 p-4 rounded-xl mb-4 outline-none"
+        />
 
-        <input id="chatRoom"
-               placeholder="Room"
-               class="w-full bg-slate-800 p-4 rounded-xl mb-6 outline-none">
+        <input
+          id="chatRoom"
+          placeholder="Room"
+          class="w-full bg-slate-800 p-4 rounded-xl mb-6 outline-none"
+        />
 
-        <button id="joinBtn"
-                class="w-full bg-gradient-to-r from-primary to-secondary p-4 rounded-xl font-semibold">
-            Join Chat
+        <button
+          id="joinBtn"
+          class="w-full bg-gradient-to-r from-primary to-secondary p-4 rounded-xl font-semibold"
+        >
+          Join Chat
         </button>
-
+      </div>
     </div>
-</div>
 
-<!-- ================= NOTIFICATION DRAWER ================= -->
-<div id="notificationDrawer"
-     class="fixed top-0 right-0 h-screen w-[380px] bg-card border-l border-purple-500/20 translate-x-full transition-all duration-300 z-40">
-
-    <div class="p-5 border-b border-purple-500/20 flex justify-between items-center">
+    <!-- ================= NOTIFICATION DRAWER ================= -->
+    <div
+      id="notificationDrawer"
+      class="fixed top-0 right-0 h-screen w-[380px] bg-card border-l border-purple-500/20 translate-x-full transition-all duration-300 z-40"
+    >
+      <div
+        class="p-5 border-b border-purple-500/20 flex justify-between items-center"
+      >
         <h2 class="font-bold text-xl">Notifications</h2>
-    </div>
+      </div>
 
-    <button id="closeNotificationBtn"
-            class="absolute top-4 right-4 text-white text-xl hover:text-red-400">
+      <button
+        id="closeNotificationBtn"
+        class="absolute top-4 right-4 text-white text-xl hover:text-red-400"
+      >
         ✖
-    </button>
+      </button>
 
-    <div id="notifications"
-         class="p-4 overflow-y-auto h-full pb-32 space-y-3">
+      <div
+        id="notifications"
+        class="p-4 overflow-y-auto h-full pb-32 space-y-3"
+      ></div>
     </div>
-</div>
 
-<!-- ================= MAIN APP ================= -->
-<div class="h-screen flex">
-
-    <!-- SIDEBAR -->
-    <aside class="w-72 bg-card border-r border-purple-500/20">
-
+    <!-- ================= MAIN APP ================= -->
+    <div class="h-screen flex">
+      <!-- SIDEBAR -->
+      <aside class="w-72 bg-card border-r border-purple-500/20 flex flex-col">
         <div class="p-6 border-b border-purple-500/20">
-            <h2 class="text-2xl font-bold">Sabry Chat</h2>
-            <p id="roomInfo" class="text-slate-400 mt-1">Room</p>
+          <h2 class="text-2xl font-bold">Sabry Chat</h2>
+          <p id="roomInfo" class="text-slate-400 mt-1">Room</p>
         </div>
 
-    </aside>
+     
+        <!-- FOOTER -->
+<div class="mt-auto p-5 border-t border-purple-500/20">
 
-    <!-- CHAT AREA -->
-    <div class="flex-1 flex flex-col">
+    <a href="https://github.com/sabry-learner"
+       target="_blank"
+       class="group flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-purple-500/20 transition-all duration-300">
 
+        <!-- GitHub Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="24"
+             height="24"
+             fill="currentColor"
+             viewBox="0 0 16 16"
+             class="text-white group-hover:scale-110 transition">
+
+            <path d="M8 0C3.58 0 0 3.58 0 8a8.013 8.013 0 0 0 5.47 7.59c.4.07.55-.17.55-.38
+            0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+            -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87
+            2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95
+            0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12
+            0 0 .67-.21 2.2.82a7.56 7.56 0 0 1 4 0c1.53-1.04
+            2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82
+            1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54
+            1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013
+            8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+
+        <div>
+            <p class="font-semibold text-white">
+                Ahmed Sabry
+            </p>
+
+            <p class="text-xs text-slate-400">
+                GitHub Profile
+            </p>
+        </div>
+
+    </a>
+
+    <p class="text-center text-xs text-slate-500 mt-4">
+        Made with ❤️ by Sabry
+    </p>
+
+</div>
+      </aside>
+
+      <!-- CHAT AREA -->
+      <div class="flex-1 flex flex-col">
         <!-- HEADER -->
-        <header class="h-20 bg-card border-b border-purple-500/20 flex justify-between items-center px-8">
+        <header
+          class="h-20 bg-card border-b border-purple-500/20 flex justify-between items-center px-8"
+        >
+          <!-- LEFT: ROOM INFO -->
+          <div>
+            <h1 class="font-bold text-xl">Live Chat</h1>
+            <span class="text-green-400 text-sm">Connected</span>
+          </div>
 
-            <!-- LEFT: ROOM INFO -->
-            <div>
-                <h1 class="font-bold text-xl">Live Chat</h1>
-                <span class="text-green-400 text-sm">Connected</span>
-            </div>
+          <!-- CENTER: ONLINE USERS (NEW) -->
+          <div class="flex items-center gap-3">
+            <div id="navOnlineUsers" class="flex -space-x-2"></div>
 
-            <!-- CENTER: ONLINE USERS (NEW) -->
-            <div class="flex items-center gap-3">
+            <span
+              id="navOnlineCount"
+              class="text-sm text-green-400 bg-green-500/10 px-2 py-1 rounded-lg"
+            >
+              0 online
+            </span>
+          </div>
 
-                <div id="navOnlineUsers" class="flex -space-x-2"></div>
+          <!-- RIGHT: ACTIONS -->
+          <div class="flex items-center gap-4">
+            <!-- NOTIFICATION -->
+            <button id="notificationBtn" class="relative text-2xl">
+              🔔
 
-                <span id="navOnlineCount"
-                      class="text-sm text-green-400 bg-green-500/10 px-2 py-1 rounded-lg">
-                    0 online
-                </span>
+              <span
+                id="notificationBadge"
+                class="hidden absolute -top-2 -right-2 bg-red-500 w-5 h-5 rounded-full text-xs flex items-center justify-center"
+              >
+                0
+              </span>
+            </button>
 
-            </div>
-
-            <!-- RIGHT: ACTIONS -->
-            <div class="flex items-center gap-4">
-
-                <!-- NOTIFICATION -->
-                <button id="notificationBtn"
-                        class="relative text-2xl">
-                    🔔
-
-                    <span id="notificationBadge"
-                          class="hidden absolute -top-2 -right-2 bg-red-500 w-5 h-5 rounded-full text-xs flex items-center justify-center">
-                        0
-                    </span>
-                </button>
-
-                <!-- LEAVE -->
-                <button id="leaveBtn"
-                        class="border border-white px-4 py-2 rounded-lg hover:bg-red-500/20 transition">
-                    Leave
-                </button>
-
-            </div>
-
+            <!-- LEAVE -->
+            <button
+              id="leaveBtn"
+              class="border border-white px-4 py-2 rounded-lg hover:bg-red-500/20 transition"
+            >
+              Leave
+            </button>
+          </div>
         </header>
 
         <!-- MESSAGES -->
-        <div id="messages"
-             class="flex-1 overflow-y-auto p-8 space-y-6">
-        </div>
+        <div id="messages" class="flex-1 overflow-y-auto p-8 space-y-6"></div>
 
         <!-- INPUT -->
         <div class="p-5 bg-card border-t border-purple-500/20">
+          <div class="flex">
+            <input
+              id="messageInput"
+              placeholder="Type your message..."
+              class="flex-1 bg-slate-900 rounded-l-full px-6 py-4 outline-none"
+            />
 
-            <div class="flex">
-
-                <input id="messageInput"
-                       placeholder="Type your message..."
-                       class="flex-1 bg-slate-900 rounded-l-full px-6 py-4 outline-none">
-
-                <button id="sendBtn"
-                        class="bg-gradient-to-r from-primary to-secondary px-10 rounded-r-full font-semibold">
-                    Send ➤
-                </button>
-
-            </div>
-
+            <button
+              id="sendBtn"
+              class="bg-gradient-to-r from-primary to-secondary px-10 rounded-r-full font-semibold"
+            >
+              Send ➤
+            </button>
+          </div>
         </div>
-
+      </div>
     </div>
 
-</div>
+    <!-- ================= SOUND ================= -->
+    <audio id="notifySound" src="notify.mp3" preload="auto"></audio>
 
-<!-- ================= SOUND ================= -->
-<audio id="notifySound" src="notify.mp3" preload="auto"></audio>
-
-<!-- ================= SCRIPT ================= -->
-<script src="app.js"></script>
-
-</body>
+    <!-- ================= SCRIPT ================= -->
+    <script src="app.js"></script>
+  </body>
 </html>
