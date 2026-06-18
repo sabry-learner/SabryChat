@@ -34,7 +34,7 @@ function createConnection() {
     if (connection) return;
 
     connection = new signalR.HubConnectionBuilder()
-        .withUrl("http://sabry-chat.runasp.net/chat")
+        .withUrl("https://sabry-chat.runasp.net/chat")
         .withAutomaticReconnect()
         .build();
 
