@@ -12,22 +12,17 @@ builder.Services.AddSignalR();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
-
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", policy =>
+    options.AddPolicy("SignalRCors", policy =>
     {
         policy
-            .WithOrigins(
-                "https://sabry-chat.netlify.app"
-                
-            )
+            .WithOrigins("https://sabry-chat.netlify.app")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
     });
 });
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
