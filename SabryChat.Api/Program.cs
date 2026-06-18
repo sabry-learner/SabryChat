@@ -35,13 +35,12 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
-
 app.UseRouting();
 
-app.UseCors("AllowFrontend");
-app.UseAuthorization();
+app.UseCors("AllowFrontend"); 
 
 app.MapControllers();
+
 app.MapHub<ChatHub>("/chat");
 app.MapHub<NotificationHub>("/notificationHub");
 
