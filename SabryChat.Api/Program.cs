@@ -17,8 +17,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins(
+        policy
+            .WithOrigins(
                 "https://sabry-chat.netlify.app"
+                
             )
             .AllowAnyHeader()
             .AllowAnyMethod()
